@@ -9,20 +9,41 @@
  *     }
  * }
  */
+
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        Set<ListNode> visited = new HashSet<>();
         
-        ListNode current = head;
+        ListNode slow = head;
+        ListNode fast = head;
         
-        while (current != null) {
-            if (visited.contains(current)) {
+        while (fast != null && slow!=null && fast.next!=null) {
+ 
+            slow = slow.next;
+            fast = fast.next.next;
+                       
+            if(slow==fast){
                 return true;
             }
-            visited.add(current);
-            current = current.next;
-        }
+            }
         
         return false;
     }
 }
+
+// public class Solution {
+//     public boolean hasCycle(ListNode head) {
+//         Set<ListNode> visited = new HashSet<>();
+        
+//         ListNode current = head;
+        
+//         while (current != null) {
+//             if (visited.contains(current)) {
+//                 return true;
+//             }
+//             visited.add(current);
+//             current = current.next;
+//         }
+        
+//         return false;
+//     }
+// }
